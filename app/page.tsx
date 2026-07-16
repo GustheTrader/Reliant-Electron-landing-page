@@ -16,6 +16,41 @@ const projects = [
   { src: `${assetRoot}/IR_0332.jpg`, title: "Made here", tag: "Northern Nevada" },
 ];
 
+const heroSlides = [
+  {
+    src: `${assetRoot}/fire%20station%203%20.jpg`,
+    alt: "Reliant Electric work at a Northern Nevada fire station",
+    label: "Public infrastructure",
+    line1: "Ready when",
+    line2: "it matters.",
+    description: "Dependable electrical construction for the places our communities count on most.",
+  },
+  {
+    src: `${assetRoot}/hells%20kitchen.jpg`,
+    alt: "Reliant Electric hospitality project",
+    label: "Hospitality",
+    line1: "Power behind",
+    line2: "the rush.",
+    description: "Coordinated commercial electrical work built around demanding schedules and busy spaces.",
+  },
+  {
+    src: `${assetRoot}/gennybig.jpg`,
+    alt: "Large backup generator installed by Reliant Electric",
+    label: "Critical power",
+    line1: "Backup without",
+    line2: "compromise.",
+    description: "Critical systems planned and installed to perform when ordinary power cannot.",
+  },
+  {
+    src: `${assetRoot}/corp%20yard%20inverter.jpg`,
+    alt: "Reliant Electric industrial power project",
+    label: "Commercial + industrial",
+    line1: "Built for the",
+    line2: "next shift.",
+    description: "Design-build electrical construction from a local team serving Northern Nevada for 20 years.",
+  },
+];
+
 const knowledge = [
   {
     match: ["service", "do you", "work"],
@@ -55,6 +90,8 @@ function Arrow() {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [heroPaused, setHeroPaused] = useState(false);
   const [assistantOpen, setAssistantOpen] = useState(false);
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([
@@ -73,6 +110,15 @@ export default function Home() {
     document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (heroPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(
+      () => setHeroIndex((current) => (current + 1) % heroSlides.length),
+      5000,
+    );
+    return () => window.clearInterval(timer);
+  }, [heroIndex, heroPaused]);
 
   const ask = (event: FormEvent) => {
     event.preventDefault();
@@ -114,17 +160,46 @@ export default function Home() {
         </div>
       </nav>
 
-      <header className="hero" id="top">
-        <img className="hero-image" src={`${assetRoot}/Shop%20Photo%20no%20sign.JPG`} alt="Reliant Electric facility in Northern Nevada" />
+      <header
+        className={`hero ${heroPaused ? "is-paused" : ""}`}
+        id="top"
+      >
+        <div className="hero-slides" aria-hidden="true">
+          {heroSlides.map((slide, index) => (
+            <div className={`hero-slide ${index === heroIndex ? "active" : ""}`} key={slide.src}>
+              <img src={slide.src} alt="" />
+            </div>
+          ))}
+        </div>
         <div className="hero-shade" />
-        <div className="hero-content reveal is-visible">
-          <div className="eyebrow"><span /> Northern Nevada · Since 2006</div>
-          <h1>Built here.<br /><em>Built to last.</em></h1>
-          <p>Design-build electrical construction from a local team that has powered Northern Nevada forward for 20 years.</p>
+        <div className="hero-content reveal is-visible" aria-live="polite" key={heroIndex}>
+          <div className="eyebrow"><span /> {heroSlides[heroIndex].label} · Northern Nevada</div>
+          <h1>{heroSlides[heroIndex].line1}<br /><em>{heroSlides[heroIndex].line2}</em></h1>
+          <p>{heroSlides[heroIndex].description}</p>
           <div className="hero-actions">
             <a className="button primary" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
             <a className="text-link" href="#work">See our work <span>↓</span></a>
           </div>
+        </div>
+        <div className="hero-pagination" aria-label="Featured projects">
+          {heroSlides.map((slide, index) => (
+            <button
+              className={`hero-dot ${index === heroIndex ? "active" : ""}`}
+              key={slide.label}
+              onClick={() => setHeroIndex(index)}
+              aria-label={`Show slide ${index + 1}: ${slide.label}`}
+              aria-current={index === heroIndex ? "true" : undefined}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+            </button>
+          ))}
+          <button
+            className="hero-pause"
+            onClick={() => setHeroPaused((current) => !current)}
+            aria-label={heroPaused ? "Resume automatic slides" : "Pause automatic slides"}
+          >
+            {heroPaused ? "Play" : "Pause"}
+          </button>
         </div>
         <div className="hero-proof">
           <div><strong>20</strong><span>Years serving<br />Northern Nevada</span></div>

@@ -34,6 +34,9 @@ test("ships mobile, motion, and assistant affordances", async () => {
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
   assert.match(page, /IntersectionObserver/);
+  assert.match(page, /const heroSlides = \[/);
+  assert.match(page, /5000/);
+  assert.match(page, /Pause automatic slides/);
   assert.match(page, /scrollBy/);
   assert.match(page, /knowledge\.find/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
