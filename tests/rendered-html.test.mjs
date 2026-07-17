@@ -44,6 +44,7 @@ test("ships mobile, motion, and assistant affordances", async () => {
   assert.match(page, /David Walker/);
   assert.match(page, /Leif Burrell/);
   assert.match(page, /Monday–Friday/);
+  assert.match(page, /\/reliant-logo\.png/);
   assert.match(page, /scrollBy/);
   assert.match(page, /knowledge\.find/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);

@@ -153,10 +153,6 @@ export default function Home() {
       </div>
 
       <nav className="nav" aria-label="Main navigation">
-        <a className="brand" href="#top" aria-label="Reliant Electric home">
-          <span className="brand-mark">R</span>
-          <span><b>RELIANT</b><small>ELECTRIC</small></span>
-        </a>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle menu">
           <span /> <span />
         </button>
@@ -167,6 +163,9 @@ export default function Home() {
           <a className="service-cta" href="mailto:matt@reliantreno.com?subject=Service%20Request">Request service <Arrow /></a>
           <a className="nav-cta" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
         </div>
+        <a className="header-logo" href="#top" aria-label="Reliant Electric home">
+          <img src="/reliant-logo.png" alt="Reliant Electric — a design-build contractor" />
+        </a>
       </nav>
 
       <header
