@@ -37,6 +37,13 @@ test("ships mobile, motion, and assistant affordances", async () => {
   assert.match(page, /const heroSlides = \[/);
   assert.match(page, /5000/);
   assert.match(page, /Pause automatic slides/);
+  assert.match(page, /Shop%20Photo%20no%20sign\.JPG/);
+  assert.match(page, /mailto:matt@reliantreno\.com\?subject=Service%20Request/);
+  assert.match(page, /Kyle Gardella/);
+  assert.match(page, /Matt Cottom/);
+  assert.match(page, /David Walker/);
+  assert.match(page, /Leif Burrell/);
+  assert.match(page, /Monday–Friday/);
   assert.match(page, /scrollBy/);
   assert.match(page, /knowledge\.find/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);

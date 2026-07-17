@@ -49,6 +49,14 @@ const heroSlides = [
     line2: "next shift.",
     description: "Design-build electrical construction from a local team serving Northern Nevada for 20 years.",
   },
+  {
+    src: `${assetRoot}/Shop%20Photo%20no%20sign.JPG`,
+    alt: "Reliant Electric service trucks outside the Reno shop",
+    label: "Local team + fleet",
+    line1: "Here when",
+    line2: "you need us.",
+    description: "A Reno-based crew, a ready fleet and 24/7 emergency service for Northern Nevada.",
+  },
 ];
 
 const knowledge = [
@@ -156,6 +164,7 @@ export default function Home() {
           <a href="#services" onClick={() => setMenuOpen(false)}>Capabilities</a>
           <a href="#work" onClick={() => setMenuOpen(false)}>Our work</a>
           <a href="#story" onClick={() => setMenuOpen(false)}>20 years</a>
+          <a className="service-cta" href="mailto:matt@reliantreno.com?subject=Service%20Request">Request service <Arrow /></a>
           <a className="nav-cta" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
         </div>
       </nav>
@@ -282,10 +291,30 @@ export default function Home() {
           <h2>Bring us the plans.<br /><em>Or the problem.</em></h2>
         </div>
         <div className="contact-card">
-          <p>Tell us where the project is, what you’re building and when you need to move.</p>
-          <a className="contact-phone" href="tel:+17753422900">775.342.2900 <Arrow /></a>
-          <a href="mailto:kyle@reliantreno.com">kyle@reliantreno.com</a>
-          <address>685 Edison Way<br />Reno, Nevada 89502</address>
+          <div className="contact-primary">
+            <p>Tell us where the project is, what you’re building and when you need to move.</p>
+            <a className="contact-phone" href="tel:+17753422900">775.342.2900 <Arrow /></a>
+            <span>Service available 24/7</span>
+            <address>685 Edison Way<br />Reno, Nevada 89502</address>
+          </div>
+          <div className="contact-info-grid">
+            <section className="contact-team" aria-labelledby="contact-team-title">
+              <h3 id="contact-team-title">Project contacts</h3>
+              <a href="mailto:kyle@reliantreno.com"><strong>Kyle Gardella</strong><span>President</span><small>kyle@reliantreno.com</small></a>
+              <a href="mailto:matt@reliantreno.com"><strong>Matt Cottom</strong><span>Service Manager</span><small>matt@reliantreno.com</small></a>
+              <a href="mailto:dwalker@reliantreno.com"><strong>David Walker</strong><span>Project Manager</span><small>dwalker@reliantreno.com</small></a>
+              <a href="mailto:leif@reliantreno.com"><strong>Leif Burrell</strong><span>Estimator</span><small>leif@reliantreno.com</small></a>
+            </section>
+            <section className="business-hours" aria-labelledby="business-hours-title">
+              <h3 id="business-hours-title">Office hours</h3>
+              <dl>
+                <div><dt>Monday–Friday</dt><dd>7:00 AM–4:00 PM</dd></div>
+                <div><dt>Saturday</dt><dd>Closed</dd></div>
+                <div><dt>Sunday</dt><dd>Closed</dd></div>
+              </dl>
+              <p>Closed on federal and Nevada state holidays.</p>
+            </section>
+          </div>
         </div>
       </section>
 
