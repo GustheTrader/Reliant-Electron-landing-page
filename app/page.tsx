@@ -161,8 +161,9 @@ export default function Home() {
           <a href="#work" onClick={() => setMenuOpen(false)}>Our work</a>
           <a href="#story" onClick={() => setMenuOpen(false)}>20 years</a>
           <a className="service-cta" href="mailto:matt@reliantreno.com?subject=Service%20Request">Request service <Arrow /></a>
-          <a className="nav-cta" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
+          <a className="nav-cta mobile-project-cta" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
         </div>
+        <a className="nav-cta header-project-cta" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle menu">
           <span /> <span />
         </button>
