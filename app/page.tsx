@@ -7,7 +7,7 @@ const assetRoot =
 
 const projects = [
   { src: `${assetRoot}/fire%20station%203%20.jpg`, title: "Civic readiness", tag: "Public infrastructure" },
-  { src: `${assetRoot}/corp%20yard%20inverter.jpg`, title: "Power that performs", tag: "Commercial" },
+  { src: "/interior-lighting-project.png", title: "Designed to shine", tag: "Commercial lighting" },
   { src: `${assetRoot}/hells%20kitchen.jpg`, title: "Built for the rush", tag: "Hospitality" },
   { src: `${assetRoot}/gennybig.jpg`, title: "Critical backup", tag: "Power systems" },
   { src: `${assetRoot}/gear1.jpg`, title: "Precision inside", tag: "Distribution" },
@@ -42,12 +42,12 @@ const heroSlides = [
     description: "Critical systems planned and installed to perform when ordinary power cannot.",
   },
   {
-    src: `${assetRoot}/corp%20yard%20inverter.jpg`,
-    alt: "Reliant Electric industrial power project",
-    label: "Commercial + industrial",
-    line1: "Built for the",
-    line2: "next shift.",
-    description: "Design-build electrical construction from a local team serving Northern Nevada for 20 years.",
+    src: "/interior-lighting-project.png",
+    alt: "Custom linear lighting installed by Reliant Electric",
+    label: "Commercial lighting",
+    line1: "Details that",
+    line2: "define a space.",
+    description: "Purposeful lighting installations delivered with the precision of a design-build electrical partner.",
   },
   {
     src: `${assetRoot}/Shop%20Photo%20no%20sign.JPG`,
@@ -153,9 +153,9 @@ export default function Home() {
       </div>
 
       <nav className="nav" aria-label="Main navigation">
-        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle menu">
-          <span /> <span />
-        </button>
+        <a className="header-logo" href="#top" aria-label="Reliant Electric home">
+          <img src="/reliant-logo.png" alt="Reliant Electric — a design-build contractor" />
+        </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="#services" onClick={() => setMenuOpen(false)}>Capabilities</a>
           <a href="#work" onClick={() => setMenuOpen(false)}>Our work</a>
@@ -163,9 +163,9 @@ export default function Home() {
           <a className="service-cta" href="mailto:matt@reliantreno.com?subject=Service%20Request">Request service <Arrow /></a>
           <a className="nav-cta" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
         </div>
-        <a className="header-logo" href="#top" aria-label="Reliant Electric home">
-          <img src="/reliant-logo.png" alt="Reliant Electric — a design-build contractor" />
-        </a>
+        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle menu">
+          <span /> <span />
+        </button>
       </nav>
 
       <header

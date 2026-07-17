@@ -23,7 +23,7 @@ button { color: inherit; }
 .brand > span:last-child { display: flex; flex-direction: column; line-height: .9; }
 .brand b { font-size: 19px; letter-spacing: .12em; }
 .brand small { font-size: 8px; letter-spacing: .48em; margin-top: 7px; }
-.nav-links { display: flex; align-items: center; gap: 30px; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.nav-links { display: flex; align-items: center; gap: 30px; margin-left: auto; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
 .nav-links > a:not(.nav-cta) { position: relative; }
 .nav-links > a:not(.nav-cta):not(.service-cta)::after { content: ""; position: absolute; left: 0; bottom: -7px; width: 0; height: 1px; background: var(--acid); transition: width .25s; }
 .nav-links > a:hover::after { width: 100%; }
@@ -180,7 +180,7 @@ footer > div { grid-column: 1/-1; border-top: 1px solid #3c3c37; padding-top: 20
   .nav { height: 74px; }
   .menu-button { display: flex; width: 40px; height: 40px; padding: 11px 8px; background: transparent; border: 1px solid rgba(255,255,255,.4); flex-direction: column; justify-content: center; gap: 7px; }
   .menu-button span { height: 1px; background: #fff; width: 100%; }
-  .nav-links { position: absolute; left: 0; right: 0; top: 74px; background: var(--ink); padding: 28px 7vw; align-items: stretch; flex-direction: column; gap: 22px; transform: translateY(-125%); opacity: 0; pointer-events: none; transition: .3s; }
+  .nav-links { position: absolute; left: 0; right: 0; top: 74px; margin-left: 0; background: var(--ink); padding: 28px 7vw; align-items: stretch; flex-direction: column; gap: 22px; transform: translateY(-125%); opacity: 0; pointer-events: none; transition: .3s; }
   .nav-links.open { transform: none; opacity: 1; pointer-events: auto; }
   .header-logo { flex-basis: 104px; width: 104px; height: 64px; }
   .hero { min-height: 760px; }
