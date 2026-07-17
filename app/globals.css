@@ -58,7 +58,7 @@ h1 em { color: var(--acid); }
 .button:hover { transform: translateY(-3px); }
 .button.primary { background: var(--copper); color: #fff; }
 .text-link { font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; display: inline-flex; gap: 22px; align-items: center; border-bottom: 1px solid currentColor; padding-bottom: 6px; }
-.hero-pagination { position: absolute; z-index: 3; left: 7.5vw; bottom: 36px; display: flex; align-items: center; gap: 10px; }
+.hero-pagination { position: absolute; z-index: 3; left: 7.5vw; bottom: 150px; display: flex; align-items: center; gap: 10px; }
 .hero-dot { width: 74px; height: 38px; padding: 0; position: relative; border: 0; border-bottom: 2px solid rgba(255,255,255,.3); background: transparent; color: rgba(255,255,255,.58); text-align: left; cursor: pointer; overflow: hidden; }
 .hero-dot::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--acid); transform: scaleX(0); transform-origin: left; }
 .hero-dot.active { color: #fff; }
@@ -68,7 +68,7 @@ h1 em { color: var(--acid); }
 @keyframes heroProgress { to { transform: scaleX(1); } }
 .hero-pause { margin-left: 7px; border: 0; background: transparent; color: rgba(255,255,255,.72); font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; cursor: pointer; }
 .hero-pause:hover { color: var(--acid); }
-.hero-proof { position: absolute; z-index: 2; right: 3.5vw; bottom: 0; width: min(700px, 60vw); display: grid; grid-template-columns: repeat(3,1fr); background: rgba(20,20,18,.82); backdrop-filter: blur(12px); }
+.hero-proof { position: absolute; z-index: 2; left: 50%; right: auto; bottom: 0; width: min(700px, 84vw); transform: translateX(-50%); display: grid; grid-template-columns: repeat(3,1fr); background: rgba(20,20,18,.82); backdrop-filter: blur(12px); }
 .hero-proof > div { min-height: 120px; padding: 27px 24px; display: flex; align-items: center; gap: 13px; border-left: 1px solid rgba(255,255,255,.16); }
 .hero-proof strong { font-size: clamp(30px, 3vw, 48px); letter-spacing: -.06em; color: var(--acid); }
 .hero-proof span { font-size: 9px; line-height: 1.6; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.67); }
@@ -186,7 +186,7 @@ footer > div { grid-column: 1/-1; border-top: 1px solid #3c3c37; padding-top: 20
   .hero-content { padding-left: 5vw; padding-top: 20px; }
   .hero-pagination { left: 5vw; bottom: 112px; }
   .hero-dot { width: 54px; }
-  .hero-proof { width: 90vw; right: 0; }
+  .hero-proof { width: 90vw; right: auto; left: 50%; }
   .hero-proof > div { min-height: 96px; padding: 18px 13px; }
   .intro, .capability-grid, .contact { grid-template-columns: 1fr; }
   .intro { padding: 110px 6vw; }
