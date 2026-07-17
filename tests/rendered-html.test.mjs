@@ -38,7 +38,11 @@ test("ships mobile, motion, and assistant affordances", async () => {
   assert.match(page, /5000/);
   assert.match(page, /Pause automatic slides/);
   assert.match(page, /Shop%20Photo%20no%20sign\.JPG/);
-  assert.match(page, /mailto:matt@reliantreno\.com\?subject=Service%20Request/);
+  assert.match(page, /const submitRequest/);
+  assert.match(page, /Emergency contact/);
+  assert.match(page, /Request service/);
+  assert.match(page, /Start a project bid/);
+  assert.match(page, /mailto:\$\{recipient\}/);
   assert.match(page, /Kyle Gardella/);
   assert.match(page, /Matt Cottom/);
   assert.match(page, /David Walker/);

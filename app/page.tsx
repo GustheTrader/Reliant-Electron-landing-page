@@ -101,6 +101,7 @@ export default function Home() {
   const [heroIndex, setHeroIndex] = useState(0);
   const [heroPaused, setHeroPaused] = useState(false);
   const [assistantOpen, setAssistantOpen] = useState(false);
+  const [requestType, setRequestType] = useState("emergency");
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([
     {
@@ -145,6 +146,31 @@ export default function Home() {
     galleryRef.current?.scrollBy({ left: direction * 460, behavior: "smooth" });
   };
 
+  const submitRequest = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const labels: Record<string, string> = {
+      emergency: "Emergency Contact",
+      service: "Service Request",
+      bid: "Project Bid Request",
+    };
+    const recipient = requestType === "bid" ? "kyle@reliantreno.com" : "matt@reliantreno.com";
+    const subject = `${labels[requestType]} — ${data.get("company") || data.get("name")}`;
+    const body = [
+      `Request type: ${labels[requestType]}`,
+      `Name: ${data.get("name")}`,
+      `Company: ${data.get("company") || "Not provided"}`,
+      `Phone: ${data.get("phone")}`,
+      `Email: ${data.get("email")}`,
+      `Project location: ${data.get("location")}`,
+      `Requested timing: ${data.get("timing") || "Not provided"}`,
+      "",
+      "Project or service details:",
+      String(data.get("details")),
+    ].join("\n");
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <main>
       <div className="topline">
@@ -160,10 +186,10 @@ export default function Home() {
           <a href="#services" onClick={() => setMenuOpen(false)}>Capabilities</a>
           <a href="#work" onClick={() => setMenuOpen(false)}>Our work</a>
           <a href="#story" onClick={() => setMenuOpen(false)}>20 years</a>
-          <a className="service-cta" href="mailto:matt@reliantreno.com?subject=Service%20Request">Request service <Arrow /></a>
-          <a className="nav-cta mobile-project-cta" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
+          <a className="service-cta" href="#request-form" onClick={() => setRequestType("service")}>Request service <Arrow /></a>
+          <a className="nav-cta mobile-project-cta" href="#request-form" onClick={() => setRequestType("bid")}>Start a project <Arrow /></a>
         </div>
-        <a className="nav-cta header-project-cta" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
+        <a className="nav-cta header-project-cta" href="#request-form" onClick={() => setRequestType("bid")}>Start a project <Arrow /></a>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle menu">
           <span /> <span />
         </button>
@@ -186,7 +212,7 @@ export default function Home() {
           <h1>{heroSlides[heroIndex].line1}<br /><em>{heroSlides[heroIndex].line2}</em></h1>
           <p>{heroSlides[heroIndex].description}</p>
           <div className="hero-actions">
-            <a className="button primary" href="tel:+17753422900">Emergency service <Arrow /></a>
+            <a className="button primary" href="#request-form" onClick={() => setRequestType("emergency")}>Emergency service <Arrow /></a>
             <a className="text-link" href="#work">See our work <span>↓</span></a>
           </div>
         </div>
@@ -316,6 +342,44 @@ export default function Home() {
             </section>
           </div>
         </div>
+        <form className="request-form" id="request-form" onSubmit={submitRequest}>
+          <div className="request-form-intro">
+            <div className="section-kicker light">Choose your next step</div>
+            <h3>One form.<br /><em>Direct to our team.</em></h3>
+            <p>Select what you need and give us the essential details. We’ll prepare an email for the right Reliant contact.</p>
+            {requestType === "emergency" && (
+              <a className="urgent-call" href="tel:+17753422900">For immediate help, call 775.342.2900 <Arrow /></a>
+            )}
+          </div>
+          <div className="request-form-fields">
+            <fieldset className="request-options">
+              <legend>What can we help with?</legend>
+              {[
+                ["emergency", "Emergency contact", "Urgent electrical problem"],
+                ["service", "Request service", "Repair, troubleshooting or maintenance"],
+                ["bid", "Start a project bid", "Plans, pricing and project scope"],
+              ].map(([value, label, note]) => (
+                <label className={requestType === value ? "selected" : ""} key={value}>
+                  <input type="radio" name="requestType" value={value} checked={requestType === value} onChange={() => setRequestType(value)} />
+                  <span><strong>{label}</strong><small>{note}</small></span>
+                </label>
+              ))}
+            </fieldset>
+            <div className="request-fields-grid">
+              <label><span>Your name *</span><input name="name" autoComplete="name" required /></label>
+              <label><span>Company</span><input name="company" autoComplete="organization" /></label>
+              <label><span>Phone *</span><input name="phone" type="tel" autoComplete="tel" required /></label>
+              <label><span>Email *</span><input name="email" type="email" autoComplete="email" required /></label>
+              <label><span>Project or service location *</span><input name="location" autoComplete="street-address" required /></label>
+              <label><span>Requested timing</span><input name="timing" placeholder="Today, this week, bid due date…" /></label>
+              <label className="request-details"><span>Tell us what you need *</span><textarea name="details" rows={5} required placeholder="Describe the issue, project scope, plans available and any important deadlines." /></label>
+            </div>
+            <div className="request-submit-row">
+              <p>Your device will open a prepared email addressed to the correct Reliant team member.</p>
+              <button type="submit">Prepare request email <Arrow /></button>
+            </div>
+          </div>
+        </form>
       </section>
 
       <footer>
