@@ -7,7 +7,7 @@ const assetRoot =
 
 const projects = [
   { src: `${assetRoot}/fire%20station%203%20.jpg`, title: "Civic readiness", tag: "Public infrastructure" },
-  { src: "/interior-lighting-project.png", title: "Designed to shine", tag: "Commercial lighting" },
+  { src: "/interior-lighting-project.jpg", title: "Designed to shine", tag: "Commercial lighting" },
   { src: `${assetRoot}/hells%20kitchen.jpg`, title: "Built for the rush", tag: "Hospitality" },
   { src: `${assetRoot}/gennybig.jpg`, title: "Critical backup", tag: "Power systems" },
   { src: `${assetRoot}/gear1.jpg`, title: "Precision inside", tag: "Distribution" },
@@ -42,7 +42,7 @@ const heroSlides = [
     description: "Critical systems planned and installed to perform when ordinary power cannot.",
   },
   {
-    src: "/interior-lighting-project.png",
+    src: "/interior-lighting-project.jpg",
     alt: "Custom linear lighting installed by Reliant Electric",
     label: "Commercial lighting",
     line1: "Details that",
