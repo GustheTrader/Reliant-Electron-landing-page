@@ -186,7 +186,7 @@ export default function Home() {
           <h1>{heroSlides[heroIndex].line1}<br /><em>{heroSlides[heroIndex].line2}</em></h1>
           <p>{heroSlides[heroIndex].description}</p>
           <div className="hero-actions">
-            <a className="button primary" href="mailto:kyle@reliantreno.com?subject=Project%20inquiry">Start a project <Arrow /></a>
+            <a className="button primary" href="tel:+17753422900">Emergency service <Arrow /></a>
             <a className="text-link" href="#work">See our work <span>↓</span></a>
           </div>
         </div>
